@@ -1,2 +1,2 @@
 console.clear();
-import "./app.js"
+import "./src/app.js"
