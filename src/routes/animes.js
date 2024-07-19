@@ -32,12 +32,22 @@ routerAnime.post("/postAnimes", async (req, res) => {   //Añade un nuevo anime 
     const newAnime = {  //Crea un nuevo anime con los datos del cuerpo de la solicitud
         id: animes.length + 1,
         title: req.body.title,
-        genre: req.body.genre
+        genre: req.body.genre,
+        studioId: req.body.studioId
     };
 
     animes.push(newAnime); //Añade el nuevo anime a la lista y escribe la lista actualizada en el archivo
     await writeAnimesFs(animes);
-    res.status(201).send(`Anime created successfully ${JSON.stringify(newAnime)}`); //Responde con un mensaje de éxito
+    const response = {
+        message:"Anime creado exitosamente",
+        anime: {
+            id: newAnime.id,
+            title: newAnime.title,
+            genre: newAnime.genre,
+            studioId: newAnime.studioId
+        }
+    }
+    res.status(201).send(`${JSON.stringify(response)}`); //Responde con un mensaje de éxito
 });
 
 //GET

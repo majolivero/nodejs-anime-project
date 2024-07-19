@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "El viaje de Chihiro",
+    "genre": "Aventura",
+    "studioId": 1
+  }
+]
