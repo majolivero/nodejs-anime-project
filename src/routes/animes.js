@@ -47,13 +47,16 @@ routerAnime.post("/postAnimes", async (req, res) => {   //Añade un nuevo anime 
             studioId: newAnime.studioId
         }
     }
-    res.status(201).send(`${JSON.stringify(response)}`); //Responde con un mensaje de éxito
+    res.status(201).send(`Anime created successfully ${JSON.stringify(response)}`); //Responde con un mensaje de éxito
 });
 
 //GET
 routerAnime.get("/", async (req, res) => {  //Obtiene todos los ánimes
     const animes = await readAnimesFs() //Lee los animes del archivo y
-    res.json(animes); //Los devuelve en la respuesta
+    const response = {
+        animes
+    }
+    res.json(response); //Los devuelve en la respuesta
 });
 
 //GET BY ID
@@ -61,7 +64,10 @@ routerAnime.get("/:animeId", async (req, res) => { //Obtiene un anime por su ID
     const animes = await readAnimesFs();  //Lee los animes del archivo
     const anime = animes.find(a => a.id === parseInt(req.params.animeId)); //Busca el anime con el id especificado
     if(!anime) return res.status(404).send("Anime not found"); //Si no lo encuentra responde con error 404
-    res.json(anime); //Si se encuentra lo devuelve en la respuesta
+    const response = {
+        anime
+    }
+    res.json(response); //Si se encuentra lo devuelve en la respuesta
 });
 
 //PUT BY ID 

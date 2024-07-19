@@ -1,4 +1,4 @@
-//Middleware para maneja de errores
+//Middleware para manejo de errores
 
 const errorHandler = (err, req, res) => {  //Define una constante llamada errorHandler que es una función flecha. La función toma tres parámetros. err: el objeto error que contiene información sobre el error que ocurrió, req: el objeto de solicitud(request) de Express, res: "El objeto de respuesta(response) de Express."
     console.error(err.stack); //Imprime la pila de errores (stack trace) en la consola. 

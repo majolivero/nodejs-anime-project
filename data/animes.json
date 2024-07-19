@@ -2,7 +2,25 @@
   {
     "id": 1,
     "title": "El viaje de Chihiro",
-    "genre": "Aventura",
+    "genre": "Drama",
     "studioId": 1
+  },
+  {
+    "id": 2,
+    "title": "Haru en el reino de los gatos",
+    "genre": "Fantasía",
+    "studioId": 2
+  },
+  {
+    "id": 3,
+    "title": "El niño y la garza",
+    "genre": "Drama",
+    "studioId": 3
+  },
+  {
+    "id": 4,
+    "title": "Mi vecino Totoro",
+    "genre": "Infantil",
+    "studioId": 4
   }
 ]
