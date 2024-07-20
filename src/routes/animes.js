@@ -1,7 +1,7 @@
 //Importar módulos
-import { Router } from "express"; //Importa el router de express para manejar las rutas
+import { Router } from 'express'; //Importa el router de express para manejar las rutas
 import { promises as fs } from 'fs';  //Importa el módulo fs de node y lo renombra como fs usando sus promesas.
-import { fileURLToPath  } from "url"; // Importa la función fileURLToPath del módulo url para convertir URLs de archivos en rutas de archivos.
+import { fileURLToPath  } from 'url'; // Importa la función fileURLToPath del módulo url para convertir URLs de archivos en rutas de archivos.
 import path from 'path'; //Importa el módulo path para trabajar con rutas de archivos y directorios.
 
 //Configuración del router y rutas de archivos
