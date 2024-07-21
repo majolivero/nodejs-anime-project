@@ -71,7 +71,7 @@ routerDirectors.put("/:id", async (req, res) => {
     if(indexDirector === -1) return res.status(404).send("Director not found"); 
     const updateDirector = {
         ...directors[indexDirector],
-        name: req.body.name,
+        name: req.body.name
     }
 
     directors[indexDirector] = updateDirector; 
@@ -93,13 +93,6 @@ routerDirectors.delete("/delete/:id", async (req, res) => {
     res.send(response); 
 
 });
-
-
-
-
-
-
-
 
 
 export default routerDirectors;
