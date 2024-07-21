@@ -94,7 +94,10 @@ routerAnime.delete("/delete/:id", async (req, res) => { //Ruta de eliminación. 
     animes = animes.filter(a => a.id !== anime.id); //Se crea una nueva lista de animes que excluye el anime que desea eliminar. Filter devuelve una nueva matriz que contiene todos los elementos que no coinciden con el id del anime a eliminar.
 
     await writeAnimesFs(animes); //Se llama a esta función para ecsribir la lista actualizada de animes en el sistema de archivos. Await se usa para esperar que la promesa de writeAnimesFs se resuelva antes de continuar
-    res.send("Anime deleted successfully"); //Envío de respuesta de éxito
+    let response = {
+        message: "Anime eliminado exitosamente"
+    }
+    res.send(response); //Envío de respuesta de éxito
 
 });
 

@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import errorHandler from './middlewares/error.handler.js';
 import routerAnime from './routes/animes.js';
+import routerStudios from './routes/studios.js';
 
 //Inicialización de la aplicación Express y configuración de dotenv
 const app = express(); //Crea una instancia de la aplicación express
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3010; //Establece el puerto en el que la aplica
 //Middlewares
 app.use(express.json()); //Usa el middleware express.json para analizar las solicitudes con cuerpos JSON.
 app.use('/animes', routerAnime); //Usa el router routerAnime para manejar todas las solicitudes a la ruta /animes.
+app.use('/studios', routerStudios);
 app.use(errorHandler); //Usa el middleware de manejo de errores errorHandler para manejar cualquier error que ocurra en la aplicación.
 
 
