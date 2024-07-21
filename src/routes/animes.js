@@ -86,28 +86,17 @@ routerAnime.put("/:id", async (req, res) => { //Actualiza un anime por su id
     res.send(`Anime update successfully ${JSON.stringify(updateAnime)}`); //Responde con un mensaje de exito
 });
 
-// routerAnime.delete("/delete/:id", async (req, res) => {
-//     let animes = await readAnimesFs();
-//     const anime = animes.find(a => a.id === parseInt(req.params.id));
-//     if(!anime) return res.status(404).send("Anime not found");
-//     animes = animes.filter(a => a.id !== anime.id);
-
-//     await writeAnimesFs(animes);
-//     res.send("Anime deleted successfully");
-
-// });
-
 //DELETE BY ID
-routerAnime.delete('/:id', async (req,res)=>{ //Elimina un anime por su id
-    const animes = await readAnimesFs(); //Lee los animes del archivo
-    const animeIndex = animes.findIndex(anime => anime.id === parseInt(req.params.id)); //Busca el indice del anime con el ID especificado
-    if(animes === -1) return res.status(404).send('Anime not found'); //Si no lo encuentra responde con un error 404
-        const deleteAnime = animes.splice(animeIndex,1); //Si se encuentra elimina el anime de la lista
-        await writeAnimesFs(deleteAnime); //Escribe la lista actualizada en el archivo
-        res.send('The anime has been deleted'); //Responde con un mensaje de éxito
+routerAnime.delete("/delete/:id", async (req, res) => { //Ruta de eliminación. El manejador de la solicitud es una función asíncrona que toma dos parámetros: request y response
+    let animes = await readAnimesFs(); // Se llama la función readAnimesFs que lee y devuelve la lista de animes desde un sistema de archivos. Await se usa para esperar a que la promesa de readAnimesFs se resuelva antes de continuar
+    const anime = animes.find(a => a.id === parseInt(req.params.id)); //Se busca el anime con el id que coincide con el id proporcionado en la solicitud(req.params.id). parseInt se usa para convertir el id de cadena de texto a un número entero
+    if(!anime) return res.status(404).send("Anime not found"); //Si no se encuentra ningun anime con el id proporcionado, se devuelve una respuesta con estado 404 y un mensaje. return res.status(404).send("Anime not found") finaliza la ejecución de la función si no se encuentra el anime.
+    animes = animes.filter(a => a.id !== anime.id); //Se crea una nueva lista de animes que excluye el anime que desea eliminar. Filter devuelve una nueva matriz que contiene todos los elementos que no coinciden con el id del anime a eliminar.
 
+    await writeAnimesFs(animes); //Se llama a esta función para ecsribir la lista actualizada de animes en el sistema de archivos. Await se usa para esperar que la promesa de writeAnimesFs se resuelva antes de continuar
+    res.send("Anime deleted successfully"); //Envío de respuesta de éxito
 
-})
+});
 
 export default routerAnime; //Exporta el router para que pueda ser usado en otros archivos del proyecto
 
